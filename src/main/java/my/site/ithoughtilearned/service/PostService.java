@@ -60,4 +60,8 @@ public class PostService {
         return dbPost;
 
     }
+
+    public List<PostDto> searchPosts(String query) {
+        return postRepository.findByPost_contentLike(query).stream().map(this::toDto).collect(Collectors.toList());
+    }
 }

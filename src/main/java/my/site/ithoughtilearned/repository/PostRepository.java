@@ -3,6 +3,7 @@ package my.site.ithoughtilearned.repository;
 import my.site.ithoughtilearned.model.Post;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -37,4 +38,7 @@ public interface PostRepository extends CrudRepository<Post, UUID>{
     List<String> findAllTags();
 
     List<Post> findByTags_Value(String value);
+
+    @Query(nativeQuery = true, value = "SELECT * FROM ITIL_POSTS.POSTS where LOWER(POST_CONTENT) like CONCAT('%',LOWER(:post_content),'%') order by POST_DATE desc")
+    List<Post> findByPost_contentLike(@Param("post_content") String post_content);
 }

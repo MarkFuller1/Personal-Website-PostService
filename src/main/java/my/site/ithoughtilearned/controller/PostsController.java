@@ -29,8 +29,14 @@ public class PostsController {
         return ResponseEntity.ok(postService.savePost(post));
     }
 
-    @GetMapping("/{query}")
+    @GetMapping("/tag/{query}")
     public ResponseEntity<List<PostDto>> getLastFewPosts(@PathVariable String query) {
         return ResponseEntity.ok(postService.searchPostsByTag(query));
     }
+
+    @GetMapping("/search/{query}")
+    public ResponseEntity<List<PostDto>> searchForPosts(@PathVariable String query) {
+        return ResponseEntity.ok(postService.searchPosts(query));
+    }
+
 }
