@@ -6,18 +6,14 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-      - name: build project to make sure it will run
       - uses: actions/checkout@v3
 
-      - name: clean compile source
-        run: sudo /usr/bin/mvn clean compile
+      - run: sudo /usr/bin/mvn clean compile
 
   deploy:
     needs: build
     runs-on: self-hosted
     steps:
-      - name: ssh into server and restart service
       - run: echo "random garbage"
 
-      - name: ssh into deploy machine and restart service
       - run: echo ${{secrets.SSHPASSWORD}} | ssh -S ${{secrets.SSHUSERNAME}}@${{secrets.SSHHOST}} "echo 0000 | sudo -S systemctl restart raspi"
