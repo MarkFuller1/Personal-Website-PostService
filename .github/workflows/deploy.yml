@@ -6,6 +6,7 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
+      - name: build project to make sure it will run
       - uses: actions/checkout@v3
       - run: sudo /usr/bin/mvn clean compile
 
