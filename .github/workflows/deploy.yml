@@ -16,4 +16,4 @@ jobs:
     steps:
       - run: echo "random garbage"
 
-      - run: echo ${{secrets.SSHPASSWORD}} | sudo -S systemctl restart raspi.service"
+      - run: echo ${{secrets.SSHPASSWORD}} | sudo -S systemctl restart raspi.service
