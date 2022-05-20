@@ -15,10 +15,3 @@ jobs:
     steps:
       - name: ssh into server and restart service
       - run: echo ${{secrets.SSHPASSWORD}} | ssh -S ${{secrets.SSHUSERNAME}}@${{secrets.SSHHOST}} "echo 0000 | sudo -S systemctl restart raspi"
-#         uses: appleboy/ssh-action@master
-#         with:
-#           host: ${{secrets.SSHHOST}}
-#           username: ${{secrets.SSHUSERNAME}}
-#           password: ${{secrets.SSHPASSWORD}}
-#           port: ${{secrets.SSHPORT}}
-#           script: echo ${{secrets.SSHPASSWORD}} | sudo -S systemctl restart raspi
