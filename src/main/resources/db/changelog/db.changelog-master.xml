@@ -51,4 +51,22 @@
             <column name="image" type="longblob"/>
         </createTable>
     </changeSet>
+    <changeSet id="0.3" author="Mark">
+        <preConditions>
+            <not>
+                <tableExists tableName="visitors"/>
+            </not>
+        </preConditions>
+        <createTable tableName="visitors">
+            <column name="pk" type="uuid">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="ip" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
