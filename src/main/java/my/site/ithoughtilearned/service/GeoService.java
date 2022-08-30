@@ -16,6 +16,8 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 @Slf4j
@@ -26,6 +28,10 @@ public class GeoService {
 
     public GeoData save(GeoData gd) {
         return geoDataRepository.save(gd);
+    }
+
+    public List<GeoData> getAll() {
+        return StreamSupport.stream(geoDataRepository.findAll().spliterator(), false).collect(Collectors.toList());
     }
 
     @Data
