@@ -1,9 +1,8 @@
 package my.site.ithoughtilearned.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,21 +10,26 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.UUID;
 
-@Entity
 @Data
-@RequiredArgsConstructor
-@Table(name = "visitors", schema = "itil_posts")
+@AllArgsConstructor
 @NoArgsConstructor
-public class Visitors {
+@Entity
+@Table(name = "geo_data", schema = "itil_posts")
+public class GeoData {
     @Id
     @Column(name = "pk", nullable = false)
-    @NonNull
     public UUID pk;
+
     @Column(name = "ip", nullable = false)
-    @NonNull
     public String ip;
 
-    @Column(name = "time", nullable = false)
-    @NonNull
-    public String time;
+    @Column(name = "lat" )
+    public String lat;
+
+    @Column(name = "lon" )
+    public String lon;
+
+    @Column(name = "meta")
+    public String meta;
+
 }

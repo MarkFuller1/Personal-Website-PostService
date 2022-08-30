@@ -69,4 +69,32 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet id="0.4" author="Mark">
+        <preConditions>
+            <not>
+                <tableExists tableName="geo_data"/>
+            </not>
+        </preConditions>
+        <createTable tableName="geo_data">
+            <column name="pk" type="uuid">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="ip" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lat" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lon" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="meta" type="text">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="0.5" author="Mark">
+        <dropNotNullConstraint tableName="geo_data" columnName="lat"/>
+        <dropNotNullConstraint tableName="geo_data" columnName="lon"/>
+    </changeSet>
 </databaseChangeLog>

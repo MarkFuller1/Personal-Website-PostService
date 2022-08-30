@@ -3,8 +3,8 @@ package my.site.ithoughtilearned.controller;
 import lombok.extern.slf4j.Slf4j;
 import my.site.ithoughtilearned.model.Visitors;
 import my.site.ithoughtilearned.model.dto.PostDto;
-import my.site.ithoughtilearned.repository.VisitorRepository;
 import my.site.ithoughtilearned.service.PostService;
+import my.site.ithoughtilearned.service.VisitorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,12 +24,12 @@ public class PostsController {
     PostService postService;
 
     @Autowired
-    VisitorRepository visitorRepository;
+    VisitorService visitorService;
 
     @GetMapping
     public ResponseEntity<List<PostDto>> getLastFewPosts(HttpServletRequest response) {
         log.info("saving visitor");
-        visitorRepository.save(new Visitors(UUID.randomUUID(), response.getRemoteAddr(), LocalDateTime.now().toString()));
+        visitorService.save(new Visitors(UUID.randomUUID(), response.getRemoteAddr(), LocalDateTime.now().toString()));
         return ResponseEntity.ok(postService.getAllPosts());
     }
 
